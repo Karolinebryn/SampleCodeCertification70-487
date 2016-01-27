@@ -7,18 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LinqToXml {
+namespace LinqToXml.Pages {
     
     
-    public partial class SiteMaster {
+    public partial class SimpleXmlFiltering {
         
         /// <summary>
-        /// MainContent control.
+        /// ddlFilterContacts control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.DropDownList ddlFilterContacts;
+        
+        /// <summary>
+        /// gvContacts control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvContacts;
     }
 }

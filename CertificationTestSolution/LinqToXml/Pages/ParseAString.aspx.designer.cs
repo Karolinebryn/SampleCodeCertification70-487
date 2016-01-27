@@ -7,18 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LinqToXml {
+namespace LinqToXml.Pages {
     
     
-    public partial class SiteMaster {
+    public partial class ParseAString {
         
         /// <summary>
-        /// MainContent control.
+        /// tbStringToParse control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.TextBox tbStringToParse;
+        
+        /// <summary>
+        /// taParsedString control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea taParsedString;
     }
 }
