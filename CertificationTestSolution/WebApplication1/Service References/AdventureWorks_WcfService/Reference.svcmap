@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4e30a656-1c78-47cd-8255-c75bf95533b0" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:3125/AdventureWorksService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="AdventureWorksService.xsd" MetadataType="Schema" ID="7feb5f9a-90ef-40bd-9cd4-db68de130639" SourceId="1" SourceUrl="http://localhost:3125/AdventureWorksService.svc?xsd=xsd0" />
+    <MetadataFile FileName="AdventureWorksService.disco" MetadataType="Disco" ID="2f2a1b33-1068-4be1-a4b9-c329541e484f" SourceId="1" SourceUrl="http://localhost:3125/AdventureWorksService.svc?disco" />
+    <MetadataFile FileName="AdventureWorksService1.xsd" MetadataType="Schema" ID="f114a6a5-52a8-45ea-af7a-bb22937ec97d" SourceId="1" SourceUrl="http://localhost:3125/AdventureWorksService.svc?xsd=xsd1" />
+    <MetadataFile FileName="AdventureWorksService2.xsd" MetadataType="Schema" ID="9f07edb9-cfab-415d-a461-bba618e10ce5" SourceId="1" SourceUrl="http://localhost:3125/AdventureWorksService.svc?xsd=xsd2" />
+    <MetadataFile FileName="AdventureWorksService.wsdl" MetadataType="Wsdl" ID="db3ae294-3bc5-464f-a32a-61486d2e8567" SourceId="1" SourceUrl="http://localhost:3125/AdventureWorksService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
