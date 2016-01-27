@@ -11,23 +11,5 @@ namespace WebApplication1 {
     
     
     public partial class _Default {
-        
-        /// <summary>
-        /// gvAdventureWorks_wcfdataservice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvAdventureWorks_wcfdataservice;
-        
-        /// <summary>
-        /// gvAdventureWorks_wcfservice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvAdventureWorks_wcfservice;
     }
 }

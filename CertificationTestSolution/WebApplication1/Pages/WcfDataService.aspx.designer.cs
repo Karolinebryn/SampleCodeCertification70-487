@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication1 {
+namespace WebApplication1.Pages {
     
     
-    public partial class SiteMaster {
+    public partial class WcfDataService {
         
         /// <summary>
-        /// MainContent control.
+        /// gvAdventureWorks_wcfdataservice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.GridView gvAdventureWorks_wcfdataservice;
     }
 }
