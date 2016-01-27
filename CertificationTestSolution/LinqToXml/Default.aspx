@@ -8,6 +8,16 @@
             <p>Click here to see the example</p>
             <a href="Pages/SimpleXmlFiltering.aspx" class="btn btn-primary">Go</a>
         </div>
+        <div class="col-md-4">
+            <h3>Parse a string to XML</h3>
+            <p>Click here to see the example</p>
+            <a href="Pages/ParseAString.aspx" class="btn btn-primary">Go</a>
+        </div>
+        <div class="col-md-4">
+            <h3>Load XML From File</h3>
+            <p>Click here to see the example</p>
+            <a href="Pages/LoadXmlFromFile.aspx" class="btn btn-primary">Go</a>
+        </div>
     </div>
 
 </asp:Content>
