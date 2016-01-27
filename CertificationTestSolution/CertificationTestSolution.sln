@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{4461E607-D5E4-4EA6-9C1C-5F0402BC7D63}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfClient.AdventureWorks", "WebApplication1\WcfClient.AdventureWorks.csproj", "{4461E607-D5E4-4EA6-9C1C-5F0402BC7D63}"
 	ProjectSection(ProjectDependencies) = postProject
 		{CA3F26BA-8F57-4C48-90C8-9AE3093E30FD} = {CA3F26BA-8F57-4C48-90C8-9AE3093E30FD}
 	EndProjectSection
