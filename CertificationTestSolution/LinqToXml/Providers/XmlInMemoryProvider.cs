@@ -14,6 +14,7 @@ namespace LinqToXml.Providers
 
         public XmlInMemoryProvider()
         {
+            //constructing elements with XElement and XAttribute
             _contacts = 
                 new XElement("Contacts",
                     new XElement("Contact",

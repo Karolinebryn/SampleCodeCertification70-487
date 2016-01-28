@@ -8,13 +8,29 @@ using System.Xml.Linq;
 
 namespace LinqToXml.Pages
 {
-    public partial class ParseAString : System.Web.UI.Page
+    public partial class UsingLinqToXml : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
+                LoadXmlFromFile();
                 ParseTheString();
+            }
+        }
+
+        private void LoadXmlFromFile()
+        {
+            try
+            {
+                var uri = Server.MapPath("~/App_Data/books.xml");
+                XElement booksFromFile = XElement.Load(uri);
+
+                taBox.InnerHtml = booksFromFile.ToString();
+            }
+            catch (Exception ex)
+            {
+                taBox.InnerHtml = ex.Message;
             }
         }
 
@@ -46,11 +62,11 @@ namespace LinqToXml.Pages
         </Contact>
     </Contacts>";
 
-            tbStringToParse.Text = stringToParse;
-
             XElement contacts = XElement.Parse(stringToParse);
 
-            taParsedString.InnerHtml = contacts.ToString();
+            taBox2.InnerHtml = contacts.ToString();
         }
+
+
     }
 }

@@ -10,24 +10,33 @@
 namespace LinqToXml.Pages {
     
     
-    public partial class ParseAString {
+    public partial class UsingLinqToXml {
         
         /// <summary>
-        /// tbStringToParse control.
+        /// lblResult1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbStringToParse;
+        protected global::System.Web.UI.WebControls.Label lblResult1;
         
         /// <summary>
-        /// taParsedString control.
+        /// taBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea taParsedString;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea taBox;
+        
+        /// <summary>
+        /// taBox2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea taBox2;
     }
 }

@@ -153,9 +153,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Pages\LoadXmlFromFile.aspx" />
-    <Content Include="Pages\ParseAString.aspx" />
     <Content Include="Pages\SimpleXmlFiltering.aspx" />
+    <Content Include="Pages\UsingLinqToXml.aspx" />
     <Content Include="Pages\UsingTheDomModel.aspx" />
     <Content Include="Pages\UsingTheXpathDataModel.aspx" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
@@ -220,26 +219,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Pages\LoadXmlFromFile.aspx.cs">
-      <DependentUpon>LoadXmlFromFile.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\LoadXmlFromFile.aspx.designer.cs">
-      <DependentUpon>LoadXmlFromFile.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\ParseAString.aspx.cs">
-      <DependentUpon>ParseAString.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\ParseAString.aspx.designer.cs">
-      <DependentUpon>ParseAString.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Pages\SimpleXmlFiltering.aspx.cs">
       <DependentUpon>SimpleXmlFiltering.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\SimpleXmlFiltering.aspx.designer.cs">
       <DependentUpon>SimpleXmlFiltering.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UsingLinqToXml.aspx.cs">
+      <DependentUpon>UsingLinqToXml.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\UsingLinqToXml.aspx.designer.cs">
+      <DependentUpon>UsingLinqToXml.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\UsingTheDomModel.aspx.cs">
       <DependentUpon>UsingTheDomModel.aspx</DependentUpon>

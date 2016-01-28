@@ -1,7 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="SimpleXmlFiltering.aspx.cs" Inherits="LinqToXml.Pages.SimpleXmlFiltering" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row">
-        <h2>Simple XML Filtering</h2>
+        <div class="col-md-12">
+            <h2>Filter using Linq to XML</h2>
             <asp:DropDownList runat="server" ID="ddlFilterContacts" OnSelectedIndexChanged="ddlFilterContacts_SelectedIndexChanged" AutoPostBack="true">
                 <asp:ListItem Value="All" Text="Show all" Selected="True"></asp:ListItem>
                 <asp:ListItem Value="Byen" Text="Byen"></asp:ListItem>
@@ -16,5 +17,6 @@
                 </Columns>
 
             </asp:GridView>
+        </div>
     </div>
 </asp:Content>
