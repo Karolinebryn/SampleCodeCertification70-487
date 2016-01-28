@@ -136,6 +136,9 @@
     <Content Include="App_Data\books.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="App_Data\bookstore2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="App_Data\bookstore.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -154,6 +157,7 @@
     <Content Include="Pages\ParseAString.aspx" />
     <Content Include="Pages\SimpleXmlFiltering.aspx" />
     <Content Include="Pages\UsingTheDomModel.aspx" />
+    <Content Include="Pages\UsingTheXpathDataModel.aspx" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -243,6 +247,13 @@
     </Compile>
     <Compile Include="Pages\UsingTheDomModel.aspx.designer.cs">
       <DependentUpon>UsingTheDomModel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UsingTheXpathDataModel.aspx.cs">
+      <DependentUpon>UsingTheXpathDataModel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\UsingTheXpathDataModel.aspx.designer.cs">
+      <DependentUpon>UsingTheXpathDataModel.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\XmlInMemoryProvider.cs" />

@@ -18,6 +18,16 @@
             <p>Click here to see the example</p>
             <a href="Pages/LoadXmlFromFile.aspx" class="btn btn-primary">Go</a>
         </div>
+        <div class="col-md-4">
+            <h3>Process XML Using the DOM Model</h3>
+            <p>Click here to see the example</p>
+            <a href="Pages/UsingTheDomModel.aspx" class="btn btn-primary">Go</a>
+        </div>
+        <div class="col-md-4">
+            <h3>Process XML Using the XPath Data Model</h3>
+            <p>Click here to see the example</p>
+            <a href="Pages/UsingTheXpathDataModel.aspx" class="btn btn-primary">Go</a>
+        </div>
     </div>
 
 </asp:Content>

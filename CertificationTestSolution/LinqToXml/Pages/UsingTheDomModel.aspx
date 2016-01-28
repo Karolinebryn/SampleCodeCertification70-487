@@ -4,18 +4,6 @@
         
         <div class="col-md-12">
             <h2>Process XML Data Using the DOM Model</h2>
-            <p>
-                The XML Document Object Model (DOM) treats XML data as a standard set of objects and is used to process XML data in memory. 
-                The System.Xml namespace provides a programmatic representation of XML documents, fragments, nodes, or node-sets. 
-                It is based on the World Wide Web Consortium (W3C) DOM Level 1 Core and the DOM Level 2 Core recommendations. 
-                The XmlDocument class represents an XML document. It includes members for retrieving and creating all other XML objects. 
-                Using the XmlDocument, and its related classes, you can construct XML documents, load and access data, modify data, 
-                and save changes.
-            </p>
-            <p>
-                If an application does not require the structure or editing capabilities provided by the DOM, the XmlReader and XmlWriter classes provide non-cached, forward-only stream access to XML.
-                 For fast, non-cached, forward-only stream access to XML, use the XmlReader and XmlWriter.
-            </p>
         </div>
     </div>
     <div class="row">
