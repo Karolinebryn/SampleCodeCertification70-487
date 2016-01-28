@@ -19,6 +19,7 @@ namespace LinqToXml.Pages
                 ReadXmlDocumentIntoDom();
                 AccessAttributesInTheDom();
                 RemoveNodeAndAttributeFromTheDom();
+                XPathSelectMethods();
             }
         }
 
@@ -133,6 +134,35 @@ namespace LinqToXml.Pages
             root.RemoveAttribute("genre");
 
             taAfter.InnerHtml = root.OuterXml;
+        }
+
+        private void XPathSelectMethods()
+        {
+            var path = Server.MapPath("~/App_Data/bookstore.xml");
+            // Load the document and set the root element.
+            XmlDocument doc = new XmlDocument();
+            doc.Load(path);
+            XmlNode root = doc.DocumentElement;
+
+            // Add the namespace.
+            XmlNamespaceManager nsmgr = new XmlNamespaceManager(doc.NameTable);
+            nsmgr.AddNamespace("bk", "urn:newbooks-schema");
+
+            // Select and display the first node in which the author's 
+            // last name is Kingsolver.
+            XmlNode node = root.SelectSingleNode(
+                "descendant::bk:book[bk:author/bk:last-name='Kingsolver']", nsmgr);
+
+            Textarea1.InnerHtml = node.InnerXml;
+
+            XmlNodeList nodeList = root.SelectNodes("descendant::bk:book[bk:price>10.00]", nsmgr);
+            var printText = "";
+            foreach (XmlNode book in nodeList)
+            {
+                printText += book.InnerXml;
+            }
+
+            Textarea2.InnerHtml = printText;
         }
 
     }

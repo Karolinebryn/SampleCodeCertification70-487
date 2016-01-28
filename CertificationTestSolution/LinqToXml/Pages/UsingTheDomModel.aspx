@@ -38,5 +38,12 @@
             <p><b>Node and attribute is removed</b></p>
             <textarea runat="server" ID="taAfter" style="width: 100%;height: 100px;"></textarea>
         </div>
+        <div class="col-md-6">
+            <h3>Select Nodes Using XPath Navigation</h3>
+            <p><b>Select and display the first node in which the author's last name is Kingsolver.</b></p>
+            <textarea runat="server" ID="Textarea1" style="width: 100%;height: 100px;"></textarea>
+            <p><b>Select all nodes where the book price is greater than 10.00.</b></p>
+            <textarea runat="server" ID="Textarea2" style="width: 100%;height: 100px;"></textarea>
+        </div>
     </div>
 </asp:Content>
