@@ -14,6 +14,11 @@
             <p>See examples on how to use Azure Blob Storage</p>
             <a href="Pages/BlobStorage.aspx" class="btn btn-primary">Go</a>
         </div>
+        <div class="col-md-4">
+            <h2>Table Storage</h2>
+            <p>See examples on how to use Azure TAble Storage</p>
+            <a href="Pages/TableStorage.aspx" class="btn btn-primary">Go</a>
+        </div>
     </div>
 
 </asp:Content>
