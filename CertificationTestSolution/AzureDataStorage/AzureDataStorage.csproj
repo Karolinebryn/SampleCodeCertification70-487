@@ -171,6 +171,7 @@
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Pages\BlobStorage.aspx" />
+    <Content Include="Pages\QueueStorage.aspx" />
     <Content Include="Pages\TableStorage.aspx" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
@@ -240,6 +241,13 @@
     </Compile>
     <Compile Include="Pages\BlobStorage.aspx.designer.cs">
       <DependentUpon>BlobStorage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\QueueStorage.aspx.cs">
+      <DependentUpon>QueueStorage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\QueueStorage.aspx.designer.cs">
+      <DependentUpon>QueueStorage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\TableStorage.aspx.cs">
       <DependentUpon>TableStorage.aspx</DependentUpon>

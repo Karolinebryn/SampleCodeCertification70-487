@@ -16,8 +16,13 @@
         </div>
         <div class="col-md-4">
             <h2>Table Storage</h2>
-            <p>See examples on how to use Azure TAble Storage</p>
+            <p>See examples on how to use Azure Table Storage</p>
             <a href="Pages/TableStorage.aspx" class="btn btn-primary">Go</a>
+        </div>
+        <div class="col-md-4">
+            <h2>Queue Storage</h2>
+            <p>See examples on how to use Azure Queue Storage</p>
+            <a href="Pages/QueueStorage.aspx" class="btn btn-primary">Go</a>
         </div>
     </div>
 
