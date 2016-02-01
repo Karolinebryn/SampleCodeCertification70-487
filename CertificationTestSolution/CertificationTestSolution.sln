@@ -20,8 +20,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caching", "Caching\Caching.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureDataStorage", "AzureDataStorage\AzureDataStorage.csproj", "{870C7EB5-869E-406C-8EF8-7738381DF451}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework", "EntityFramework\EntityFramework.csproj", "{70313012-F150-4ABE-A30D-6537BFDE2CF3}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,10 +54,6 @@ Global
 		{870C7EB5-869E-406C-8EF8-7738381DF451}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{870C7EB5-869E-406C-8EF8-7738381DF451}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{870C7EB5-869E-406C-8EF8-7738381DF451}.Release|Any CPU.Build.0 = Release|Any CPU
-		{70313012-F150-4ABE-A30D-6537BFDE2CF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{70313012-F150-4ABE-A30D-6537BFDE2CF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{70313012-F150-4ABE-A30D-6537BFDE2CF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{70313012-F150-4ABE-A30D-6537BFDE2CF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
