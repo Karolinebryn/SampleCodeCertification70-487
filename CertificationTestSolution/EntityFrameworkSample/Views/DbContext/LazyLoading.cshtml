@@ -1,0 +1,64 @@
+﻿@model IEnumerable<EntityFrameworkSample.Product>
+
+@{
+    ViewBag.Title = "LazyLoadingEnabled";
+    var status = Request.Params["status"] != null ? Request.Params["status"] : "on";
+}
+
+<h2>Lazy Loading with DbContext</h2>
+
+@{
+    <p>Current view: @status</p>
+    <p>
+        @Html.ActionLink("Lazy loading off: include", "LazyLoading", new { status = "include" }) |
+        @Html.ActionLink("Lazy loading off: reference", "LazyLoading", new { status = "reference" }) |
+        @Html.ActionLink("Lazy loading off", "LazyLoading", new { status = "off" }) |
+        @Html.ActionLink("Lazy loading on", "LazyLoading")
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiscontinuedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductCategory)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductModel)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductNumber)
+        </td>     
+        <td>
+            @Html.DisplayFor(modelItem => item.DiscontinuedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductCategory.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductModel.Name)
+        </td>
+    </tr>
+}
+
+</table>

@@ -180,7 +180,7 @@
       <DependentUpon>AdventureWorksModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ProductCategoriesController.cs" />
+    <Compile Include="Controllers\DbContextController.cs" />
     <Compile Include="Customer.cs">
       <DependentUpon>AdventureWorksModel.tt</DependentUpon>
     </Compile>
@@ -271,8 +271,11 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\ProductCategories\Index.cshtml" />
-    <Content Include="Views\ProductCategories\Create.cshtml" />
+    <Content Include="Views\DbContext\Index.cshtml" />
+    <Content Include="Views\DbContext\Create.cshtml" />
+    <Content Include="Views\DbContext\LazyLoading.cshtml" />
+    <Content Include="Views\DbContext\Query.cshtml" />
+    <Content Include="Views\DbContext\CompiledQuery.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

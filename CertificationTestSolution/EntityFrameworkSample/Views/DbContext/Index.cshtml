@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "DbContext";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h1>DbContext</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Query, Update and Delete DbContext</h2>
+        <p>Query DbContext, Delete entries and Create entries, with retry configuration.</p>
+        <p>
+            @Html.ActionLink("Go", "Query", "DbContext", null, new { @class = "btn btn-primary" })
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>Lazy Loading</h2>
+        <p>
+            @Html.ActionLink("Go", "LazyLoading", "DbContext", null, new { @class = "btn btn-primary" })
+        </p>
+    </div>
+
+</div>

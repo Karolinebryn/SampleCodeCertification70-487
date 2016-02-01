@@ -9,17 +9,24 @@ using System.Web.Mvc;
 
 namespace EntityFrameworkSample.Controllers
 {
-    public class ProductCategoriesController : Controller
+    public class DbContextController : Controller
     {
         private AdventureWorksEntities _context;
+        private bool _lazyLoadingEnabled;
 
-        public ProductCategoriesController()
+        public DbContextController()
         {
             _context = new AdventureWorksEntities();
+            _lazyLoadingEnabled = _context.Configuration.LazyLoadingEnabled;
+        }
+
+        public ActionResult Index()
+        {
+            return View();
         }
 
         // GET: ProductCategories
-        public ActionResult Index()
+        public ActionResult Query()
         {
             var categories = _context.ProductCategories.OrderByDescending(c => c.ModifiedDate).Take(10).ToList();
             return View(categories);
@@ -51,10 +58,10 @@ namespace EntityFrameworkSample.Controllers
                     try
                     {
                         model.ModifiedDate = DateTime.Now;
-                        model.rowguid = new Guid();//Guid.NewGuid();
+                        model.rowguid = Guid.NewGuid();
                         _context.ProductCategories.Add(model);
                         _context.SaveChanges();
-                        return RedirectToAction("Index");
+                        return RedirectToAction("Query");
                     }
                     catch (Exception ex)
                     {
@@ -79,7 +86,52 @@ namespace EntityFrameworkSample.Controllers
                 _context.ProductCategories.Remove(category);
                 _context.SaveChanges();
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Query");
+        }
+
+        public ActionResult LazyLoading(string status = null)
+        {
+            IEnumerable<Product> products;
+            if(!string.IsNullOrEmpty(status) && status == "include")
+            {
+                _context.Configuration.LazyLoadingEnabled = false;
+                //include category and model for all products
+                products = _context.Products.Include("ProductCategory").Include("ProductModel").OrderBy(p => p.Name).Take(10).ToList();
+            }
+            else if (!string.IsNullOrEmpty(status) && status == "reference")
+            {
+                _context.Configuration.LazyLoadingEnabled = false;
+                products = _context.Products.OrderBy(p => p.Name).Take(10).ToList();
+
+                //load product category and model for first product
+                var product = products.FirstOrDefault();
+                _context.Entry(product).Reference("ProductCategory").Load();
+                _context.Entry(product).Reference("ProductModel").Load();
+
+            }
+            else if (!string.IsNullOrEmpty(status) && status == "off")
+            {
+                _context.Configuration.LazyLoadingEnabled = false;
+                products = _context.Products.OrderBy(p => p.Name).Take(10).ToList();
+            }
+            else
+            {
+                _context.Configuration.LazyLoadingEnabled = true;
+                products = _context.Products.OrderBy(p => p.Name).Take(10).ToList();
+                
+            }
+            return View(products);
+        }
+
+        public ActionResult CompiledQuery()
+        {
+            return View();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+            base.Dispose(disposing);
         }
     }
 }
