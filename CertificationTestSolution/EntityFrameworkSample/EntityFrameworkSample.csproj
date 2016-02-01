@@ -275,7 +275,6 @@
     <Content Include="Views\DbContext\Create.cshtml" />
     <Content Include="Views\DbContext\LazyLoading.cshtml" />
     <Content Include="Views\DbContext\Query.cshtml" />
-    <Content Include="Views\DbContext\CompiledQuery.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

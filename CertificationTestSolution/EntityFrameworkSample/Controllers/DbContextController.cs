@@ -123,11 +123,6 @@ namespace EntityFrameworkSample.Controllers
             return View(products);
         }
 
-        public ActionResult CompiledQuery()
-        {
-            return View();
-        }
-
         protected override void Dispose(bool disposing)
         {
             _context.Dispose();
