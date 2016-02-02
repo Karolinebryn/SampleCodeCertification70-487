@@ -1,0 +1,20 @@
+﻿@model IEnumerable<EntityFrameworkSample.Models.Customer2>
+
+@{
+    ViewBag.Title = "EntitySQL";
+}
+
+<h2>Entity SQL</h2>
+<p>Filter customers by id. add /{id} to url to filter</p>
+
+<h3>Result: </h3>
+<ul>
+
+
+    @foreach (var item in Model)
+    {
+        <li><b>Id: </b> @item.CustomerID | <b>Name: </b>@item.CustomerName</li>
+    }
+</ul>
+
+

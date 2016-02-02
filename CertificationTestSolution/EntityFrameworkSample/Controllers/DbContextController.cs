@@ -1,9 +1,12 @@
-﻿using System;
+﻿using EntityFrameworkSample.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core;
+using System.Data.Entity.Core.EntityClient;
 using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -121,6 +124,62 @@ namespace EntityFrameworkSample.Controllers
                 
             }
             return View(products);
+        }
+
+        public ActionResult EntitySQL(int id = 0)
+        {
+            string esqlQuery = @"SELECT VALUE customers FROM AdventureWorksEntities.Customers AS customers  WHERE customers.CustomerID == @id";
+
+            var customers = new List<Customer2>();
+            using(var conn = new EntityConnection("name=AdventureWorksEntities"))
+            {
+                conn.Open();
+
+                using(var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = esqlQuery;
+                    var param = new EntityParameter {
+                        ParameterName = "id",
+                        Value = id
+                    };
+                    cmd.Parameters.Add(param);
+
+                    using(var reader = cmd.ExecuteReader(System.Data.CommandBehavior.SequentialAccess))
+                    {
+                        while (reader.Read())
+                        {
+                            var customer = new Customer2
+                            {
+                                CustomerID = int.Parse(reader["CustomerID"].ToString()),
+                                CustomerName = reader["FirstName"] + " " + reader["MiddleName"] + " " + reader["LastName"]
+                            };
+
+                            customers.Add(customer);
+                        }
+                    }
+                }
+
+                conn.Close();
+            }
+
+            return View(customers);
+        }
+
+        public async Task<ActionResult> GetAsync(int id = 0)
+        {
+            var task = GetCustomersAsync(id);
+
+            //Do other operations
+            var e = 3 + 3;
+            var f = e % 4;
+
+            var result = await task;
+            return View(result);
+        }
+
+        public async Task<Customer> GetCustomersAsync(int customerId)
+        {
+            return await _context.Customers.FindAsync(customerId);
         }
 
         protected override void Dispose(bool disposing)

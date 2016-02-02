@@ -193,6 +193,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Customer2.cs" />
     <Compile Include="Product.cs">
       <DependentUpon>AdventureWorksModel.tt</DependentUpon>
     </Compile>
@@ -275,10 +276,11 @@
     <Content Include="Views\DbContext\Create.cshtml" />
     <Content Include="Views\DbContext\LazyLoading.cshtml" />
     <Content Include="Views\DbContext\Query.cshtml" />
+    <Content Include="Views\DbContext\EntitySQL.cshtml" />
+    <Content Include="Views\DbContext\GetAsync.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
