@@ -12,6 +12,8 @@ namespace EntityFrameworkSample
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class AdventureWorksEntities : DbContext
     {
@@ -37,5 +39,31 @@ namespace EntityFrameworkSample
         public virtual DbSet<ProductModelProductDescription> ProductModelProductDescriptions { get; set; }
         public virtual DbSet<SalesOrderDetail> SalesOrderDetails { get; set; }
         public virtual DbSet<SalesOrderHeader> SalesOrderHeaders { get; set; }
+    
+        [DbFunction("AdventureWorksEntities", "ufnGetAllCategories")]
+        public virtual IQueryable<ufnGetAllCategories_Result> ufnGetAllCategories()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<ufnGetAllCategories_Result>("[AdventureWorksEntities].[ufnGetAllCategories]()");
+        }
+    
+        [DbFunction("AdventureWorksEntities", "ufnGetCustomerInformation")]
+        public virtual IQueryable<ufnGetCustomerInformation_Result> ufnGetCustomerInformation(Nullable<int> customerID)
+        {
+            var customerIDParameter = customerID.HasValue ?
+                new ObjectParameter("CustomerID", customerID) :
+                new ObjectParameter("CustomerID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<ufnGetCustomerInformation_Result>("[AdventureWorksEntities].[ufnGetCustomerInformation](@CustomerID)", customerIDParameter);
+        }
+    
+        public virtual int uspLogError(ObjectParameter errorLogID)
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspLogError", errorLogID);
+        }
+    
+        public virtual int uspPrintError()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspPrintError");
+        }
     }
 }

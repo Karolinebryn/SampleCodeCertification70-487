@@ -194,6 +194,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Customer2.cs" />
+    <Compile Include="Models\StoredProcedureViewModel.cs" />
     <Compile Include="Product.cs">
       <DependentUpon>AdventureWorksModel.tt</DependentUpon>
     </Compile>
@@ -214,6 +215,12 @@
       <DependentUpon>AdventureWorksModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SalesOrderHeader.cs">
+      <DependentUpon>AdventureWorksModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ufnGetAllCategories_Result.cs">
+      <DependentUpon>AdventureWorksModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ufnGetCustomerInformation_Result.cs">
       <DependentUpon>AdventureWorksModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -278,6 +285,7 @@
     <Content Include="Views\DbContext\Query.cshtml" />
     <Content Include="Views\DbContext\EntitySQL.cshtml" />
     <Content Include="Views\DbContext\GetAsync.cshtml" />
+    <Content Include="Views\DbContext\StoredProcedures.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

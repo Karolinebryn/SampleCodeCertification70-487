@@ -9,6 +9,15 @@
 <p>Set breakpoint in code to see async behaviour</p>
 
 <h3>Result: </h3>
-<p>@Model.LastName, @Model.FirstName @Model.MiddleName </p>
+@{
+    if (Model != null)
+    {
+        <p>@Model.LastName, @Model.FirstName @Model.MiddleName </p>
+    }
+    else
+    {
+        <p>No result</p>
+    }
+}
 
 

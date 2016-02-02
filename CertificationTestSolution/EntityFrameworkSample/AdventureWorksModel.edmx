@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="AdventureWorksModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="AdventureWorksModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BuildVersion">
           <Key>
             <PropertyRef Name="SystemInformationID" />
@@ -324,6 +324,37 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        
+        <Function Name="ufnGetAllCategories" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="ParentProductCategoryName" Type="nvarchar" MaxLength="50" />
+                <Property Name="ProductCategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="ProductCategoryID" Type="int" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="ufnGetCustomerInformation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CustomerID" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="CustomerID" Type="int" Nullable="false" />
+                <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="ufnGetSalesOrderStatusText" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+          <Parameter Name="Status" Type="tinyint" Mode="In" />
+        </Function>
+        <Function Name="uspLogError" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ErrorLogID" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="uspPrintError" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="AdventureWorksModelStoreContainer">
           <EntitySet Name="BuildVersion" EntityType="Self.BuildVersion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" Schema="dbo" store:Type="Tables" />
@@ -386,8 +417,7 @@
             <End Role="SalesOrderHeader" EntitySet="SalesOrderHeader" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AdventureWorksModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -795,7 +825,25 @@
             <End Role="SalesOrderHeader" EntitySet="SalesOrderHeaders" />
             <End Role="SalesOrderDetail" EntitySet="SalesOrderDetails" />
           </AssociationSet>
+          <FunctionImport Name="ufnGetAllCategories" IsComposable="true" ReturnType="Collection(AdventureWorksModel.ufnGetAllCategories_Result)" />
+          <FunctionImport Name="ufnGetCustomerInformation" IsComposable="true" ReturnType="Collection(AdventureWorksModel.ufnGetCustomerInformation_Result)">
+            <Parameter Name="CustomerID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="uspLogError">
+            <Parameter Name="ErrorLogID" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="uspPrintError" />
         </EntityContainer>
+        <ComplexType Name="ufnGetAllCategories_Result">
+          <Property Type="String" Name="ParentProductCategoryName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ProductCategoryName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="ProductCategoryID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="ufnGetCustomerInformation_Result">
+          <Property Type="Int32" Name="CustomerID" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -983,6 +1031,26 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ufnGetAllCategories" FunctionName="AdventureWorksModel.Store.ufnGetAllCategories">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AdventureWorksModel.ufnGetAllCategories_Result">
+                <ScalarProperty Name="ParentProductCategoryName" ColumnName="ParentProductCategoryName" />
+                <ScalarProperty Name="ProductCategoryName" ColumnName="ProductCategoryName" />
+                <ScalarProperty Name="ProductCategoryID" ColumnName="ProductCategoryID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ufnGetCustomerInformation" FunctionName="AdventureWorksModel.Store.ufnGetCustomerInformation">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AdventureWorksModel.ufnGetCustomerInformation_Result">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspLogError" FunctionName="AdventureWorksModel.Store.uspLogError" />
+          <FunctionImportMapping FunctionImportName="uspPrintError" FunctionName="AdventureWorksModel.Store.uspPrintError" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

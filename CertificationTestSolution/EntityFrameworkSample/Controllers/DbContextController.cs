@@ -182,6 +182,19 @@ namespace EntityFrameworkSample.Controllers
             return await _context.Customers.FindAsync(customerId);
         }
 
+        public ActionResult StoredProcedures()
+        {
+            var categories = _context.ufnGetAllCategories();
+            var customer = _context.ufnGetCustomerInformation(1);
+
+            var model = new StoredProcedureViewModel
+            {
+                Categories = categories.ToList(),
+                Customer = customer.FirstOrDefault()
+            };
+            return View(model);
+        }
+
         protected override void Dispose(bool disposing)
         {
             _context.Dispose();

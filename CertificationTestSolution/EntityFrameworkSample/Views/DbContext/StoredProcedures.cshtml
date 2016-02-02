@@ -1,0 +1,64 @@
+﻿@model EntityFrameworkSample.Models.StoredProcedureViewModel
+
+@{
+    ViewBag.Title = "Stored Procedures";
+}
+
+<h2>Stored Procedures</h2>
+<h3>Customer from stored procedure</h3>
+
+<dl class="dl-horizontal">
+    <dt>
+        @Html.DisplayNameFor(model => model.Customer.CustomerID)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Customer.CustomerID)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.Customer.FirstName)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Customer.FirstName)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.Customer.LastName)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Customer.LastName)
+    </dd>
+</dl>
+
+<h3>Categories from stored procedure</h3>
+<table class="table">
+    <tr>
+        <th>
+            ProductCategoryID
+        </th>
+        <th>
+            ProductCategoryName
+        </th>
+        <th>
+            ParentProductCategoryName
+        </th>
+    </tr>
+
+    @foreach (var item in Model.Categories)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductCategoryID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductCategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParentProductCategoryName)
+            </td>
+        </tr>
+    }
+
+</table>
+
