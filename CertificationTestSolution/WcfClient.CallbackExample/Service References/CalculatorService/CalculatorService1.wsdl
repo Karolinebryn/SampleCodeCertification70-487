@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://Microsoft.ServiceModel.Samples" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://Microsoft.ServiceModel.Samples" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://Microsoft.ServiceModel.Samples/Imports">
+      <xsd:import schemaLocation="http://localhost:10604/CalculatorService.svc?xsd=xsd0" namespace="http://Microsoft.ServiceModel.Samples" />
+      <xsd:import schemaLocation="http://localhost:10604/CalculatorService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ICalculatorDuplex_Clear_InputMessage">
+    <wsdl:part name="parameters" element="tns:Clear" />
+  </wsdl:message>
+  <wsdl:message name="ICalculatorDuplex_AddTo_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddTo" />
+  </wsdl:message>
+  <wsdl:message name="ICalculatorDuplex_SubtractFrom_InputMessage">
+    <wsdl:part name="parameters" element="tns:SubtractFrom" />
+  </wsdl:message>
+  <wsdl:message name="ICalculatorDuplex_MultiplyBy_InputMessage">
+    <wsdl:part name="parameters" element="tns:MultiplyBy" />
+  </wsdl:message>
+  <wsdl:message name="ICalculatorDuplex_DivideBy_InputMessage">
+    <wsdl:part name="parameters" element="tns:DivideBy" />
+  </wsdl:message>
+  <wsdl:message name="ICalculatorDuplex_Equals_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:Equals" />
+  </wsdl:message>
+  <wsdl:message name="ICalculatorDuplex_Equation_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:Equation" />
+  </wsdl:message>
+  <wsdl:portType msc:usingSession="true" name="ICalculatorDuplex">
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Clear">
+      <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/ICalculatorDuplex/Clear" message="tns:ICalculatorDuplex_Clear_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="AddTo">
+      <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/ICalculatorDuplex/AddTo" message="tns:ICalculatorDuplex_AddTo_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="SubtractFrom">
+      <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/ICalculatorDuplex/SubtractFrom" message="tns:ICalculatorDuplex_SubtractFrom_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="MultiplyBy">
+      <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/ICalculatorDuplex/MultiplyBy" message="tns:ICalculatorDuplex_MultiplyBy_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="DivideBy">
+      <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/ICalculatorDuplex/DivideBy" message="tns:ICalculatorDuplex_DivideBy_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Equals">
+      <wsdl:output wsaw:Action="http://Microsoft.ServiceModel.Samples/ICalculatorDuplex/Equals" message="tns:ICalculatorDuplex_Equals_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Equation">
+      <wsdl:output wsaw:Action="http://Microsoft.ServiceModel.Samples/ICalculatorDuplex/Equation" message="tns:ICalculatorDuplex_Equation_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

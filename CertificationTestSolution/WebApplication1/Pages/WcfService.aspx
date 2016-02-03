@@ -14,4 +14,10 @@
             </Columns>
         </asp:GridView>
     </div>
+    <div class="row">
+        <h2>Fault handling</h2>
+        <asp:TextBox runat="server" ID="tbCustomerId"></asp:TextBox>
+        <asp:Button runat="server" ID="btnSearchCustomerById" Text="Search customer by id" CssClass="btn btn-primary" OnClick="btnSearchCustomerById_Click" />
+        <asp:Label runat="server" ID="lblSearchResult"></asp:Label>
+    </div>
 </asp:Content>

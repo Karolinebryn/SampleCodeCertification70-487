@@ -122,6 +122,67 @@ namespace WebApplication1.AdventureWorks_WcfService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerNotFoundFault", Namespace="http://schemas.datacontract.org/2004/07/WcfService.AdventureWorks")]
+    [System.SerializableAttribute()]
+    public partial class CustomerNotFoundFault : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CustomerIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ErrorMessageField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CustomerId {
+            get {
+                return this.CustomerIdField;
+            }
+            set {
+                if ((this.CustomerIdField.Equals(value) != true)) {
+                    this.CustomerIdField = value;
+                    this.RaisePropertyChanged("CustomerId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ErrorMessage {
+            get {
+                return this.ErrorMessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ErrorMessageField, value) != true)) {
+                    this.ErrorMessageField = value;
+                    this.RaisePropertyChanged("ErrorMessage");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AdventureWorks_WcfService.IAdventureWorksService")]
     public interface IAdventureWorksService {
@@ -137,6 +198,14 @@ namespace WebApplication1.AdventureWorks_WcfService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdventureWorksService/GetCustomersWithOrders", ReplyAction="http://tempuri.org/IAdventureWorksService/GetCustomersWithOrdersResponse")]
         System.Threading.Tasks.Task<WebApplication1.AdventureWorks_WcfService.Customer[]> GetCustomersWithOrdersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdventureWorksService/GetCustomerWithFaultHandling", ReplyAction="http://tempuri.org/IAdventureWorksService/GetCustomerWithFaultHandlingResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(WebApplication1.AdventureWorks_WcfService.CustomerNotFoundFault), Action="http://tempuri.org/IAdventureWorksService/GetCustomerWithFaultHandlingCustomerNot" +
+            "FoundFaultFault", Name="CustomerNotFoundFault", Namespace="http://schemas.datacontract.org/2004/07/WcfService.AdventureWorks")]
+        WebApplication1.AdventureWorks_WcfService.Customer GetCustomerWithFaultHandling(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdventureWorksService/GetCustomerWithFaultHandling", ReplyAction="http://tempuri.org/IAdventureWorksService/GetCustomerWithFaultHandlingResponse")]
+        System.Threading.Tasks.Task<WebApplication1.AdventureWorks_WcfService.Customer> GetCustomerWithFaultHandlingAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -180,6 +249,14 @@ namespace WebApplication1.AdventureWorks_WcfService {
         
         public System.Threading.Tasks.Task<WebApplication1.AdventureWorks_WcfService.Customer[]> GetCustomersWithOrdersAsync() {
             return base.Channel.GetCustomersWithOrdersAsync();
+        }
+        
+        public WebApplication1.AdventureWorks_WcfService.Customer GetCustomerWithFaultHandling(int id) {
+            return base.Channel.GetCustomerWithFaultHandling(id);
+        }
+        
+        public System.Threading.Tasks.Task<WebApplication1.AdventureWorks_WcfService.Customer> GetCustomerWithFaultHandlingAsync(int id) {
+            return base.Channel.GetCustomerWithFaultHandlingAsync(id);
         }
     }
 }

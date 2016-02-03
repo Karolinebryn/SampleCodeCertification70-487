@@ -5,6 +5,7 @@
       <xsd:import schemaLocation="http://localhost:3125/AdventureWorksService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:3125/AdventureWorksService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:3125/AdventureWorksService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WcfService.AdventureWorks.Models" />
+      <xsd:import schemaLocation="http://localhost:3125/AdventureWorksService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/WcfService.AdventureWorks" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IAdventureWorksService_GetCustomerName_InputMessage">
@@ -19,6 +20,15 @@
   <wsdl:message name="IAdventureWorksService_GetCustomersWithOrders_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCustomersWithOrdersResponse" />
   </wsdl:message>
+  <wsdl:message name="IAdventureWorksService_GetCustomerWithFaultHandling_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerWithFaultHandling" />
+  </wsdl:message>
+  <wsdl:message name="IAdventureWorksService_GetCustomerWithFaultHandling_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerWithFaultHandlingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdventureWorksService_GetCustomerWithFaultHandling_CustomerNotFoundFaultFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/WcfService.AdventureWorks" name="detail" element="q1:CustomerNotFoundFault" />
+  </wsdl:message>
   <wsdl:portType name="IAdventureWorksService">
     <wsdl:operation name="GetCustomerName">
       <wsdl:input wsaw:Action="http://tempuri.org/IAdventureWorksService/GetCustomerName" message="tns:IAdventureWorksService_GetCustomerName_InputMessage" />
@@ -27,6 +37,11 @@
     <wsdl:operation name="GetCustomersWithOrders">
       <wsdl:input wsaw:Action="http://tempuri.org/IAdventureWorksService/GetCustomersWithOrders" message="tns:IAdventureWorksService_GetCustomersWithOrders_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAdventureWorksService/GetCustomersWithOrdersResponse" message="tns:IAdventureWorksService_GetCustomersWithOrders_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerWithFaultHandling">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdventureWorksService/GetCustomerWithFaultHandling" message="tns:IAdventureWorksService_GetCustomerWithFaultHandling_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdventureWorksService/GetCustomerWithFaultHandlingResponse" message="tns:IAdventureWorksService_GetCustomerWithFaultHandling_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IAdventureWorksService/GetCustomerWithFaultHandlingCustomerNotFoundFaultFault" name="CustomerNotFoundFaultFault" message="tns:IAdventureWorksService_GetCustomerWithFaultHandling_CustomerNotFoundFaultFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IAdventureWorksService" type="tns:IAdventureWorksService">
@@ -48,6 +63,18 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerWithFaultHandling">
+      <soap:operation soapAction="http://tempuri.org/IAdventureWorksService/GetCustomerWithFaultHandling" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomerNotFoundFaultFault">
+        <soap:fault use="literal" name="CustomerNotFoundFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="AdventureWorksService">

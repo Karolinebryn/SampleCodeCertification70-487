@@ -205,6 +205,9 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
     <None Include="Service References\AdventureWorks_WcfService\AdventureWorksService.disco" />
+    <None Include="Service References\AdventureWorks_WcfService\AdventureWorksService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\AdventureWorks_WcfService\configuration91.svcinfo" />
     <None Include="Service References\AdventureWorks_WcfService\configuration.svcinfo" />
     <None Include="Service References\AdventureWorks_WcfService\Reference.svcmap">

@@ -15,7 +15,18 @@ namespace WcfService.AdventureWorks
         [OperationContract]
         IEnumerable<Models.Customer> GetCustomersWithOrders();
 
-        // TODO: Add your service operations here
+        [OperationContract]
+        [FaultContract(typeof(CustomerNotFoundFault))]
+        Models.Customer GetCustomerWithFaultHandling(int id);
+    }
+
+    [DataContract]
+    public class CustomerNotFoundFault
+    {
+        [DataMember]
+        public int CustomerId { get; set; }
+        [DataMember]
+        public string ErrorMessage { get; set; }
     }
 
 }

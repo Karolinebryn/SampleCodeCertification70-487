@@ -24,8 +24,9 @@
   <Metadata>
     <MetadataFile FileName="AdventureWorksService.xsd" MetadataType="Schema" ID="7feb5f9a-90ef-40bd-9cd4-db68de130639" SourceId="1" SourceUrl="http://localhost:3125/AdventureWorksService.svc?xsd=xsd0" />
     <MetadataFile FileName="AdventureWorksService.disco" MetadataType="Disco" ID="2f2a1b33-1068-4be1-a4b9-c329541e484f" SourceId="1" SourceUrl="http://localhost:3125/AdventureWorksService.svc?disco" />
-    <MetadataFile FileName="AdventureWorksService1.xsd" MetadataType="Schema" ID="f114a6a5-52a8-45ea-af7a-bb22937ec97d" SourceId="1" SourceUrl="http://localhost:3125/AdventureWorksService.svc?xsd=xsd1" />
     <MetadataFile FileName="AdventureWorksService2.xsd" MetadataType="Schema" ID="9f07edb9-cfab-415d-a461-bba618e10ce5" SourceId="1" SourceUrl="http://localhost:3125/AdventureWorksService.svc?xsd=xsd2" />
+    <MetadataFile FileName="AdventureWorksService3.xsd" MetadataType="Schema" ID="e103d853-d73b-47a0-a449-f653c5b3dd9f" SourceId="1" SourceUrl="http://localhost:3125/AdventureWorksService.svc?xsd=xsd3" />
+    <MetadataFile FileName="AdventureWorksService1.xsd" MetadataType="Schema" ID="f114a6a5-52a8-45ea-af7a-bb22937ec97d" SourceId="1" SourceUrl="http://localhost:3125/AdventureWorksService.svc?xsd=xsd1" />
     <MetadataFile FileName="AdventureWorksService.wsdl" MetadataType="Wsdl" ID="db3ae294-3bc5-464f-a32a-61486d2e8567" SourceId="1" SourceUrl="http://localhost:3125/AdventureWorksService.svc?wsdl" />
   </Metadata>
   <Extensions>

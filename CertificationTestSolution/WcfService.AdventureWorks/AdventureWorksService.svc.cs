@@ -1,6 +1,9 @@
 ﻿using Data.AdventureWorks;
 using System.Collections.Generic;
 using System.Linq;
+using System;
+using WcfService.AdventureWorks.Models;
+using System.ServiceModel;
 
 namespace WcfService.AdventureWorks
 {
@@ -41,6 +44,33 @@ namespace WcfService.AdventureWorks
             }
 
             return result;
+        }
+
+        public Models.Customer GetCustomerWithFaultHandling(int id)
+        {
+            try
+            {
+                var customer = _context.Customers.Find(id);
+                var result = new Models.Customer
+                {
+                    Id = customer.CustomerID,
+                    FirstName = customer.FirstName,
+                    LastName = customer.LastName,
+                    Phone = customer.Phone,
+                    Title = customer.Title
+                };
+                return result;
+
+            }
+            catch(NullReferenceException ex)
+            {
+                var fault = new CustomerNotFoundFault
+                {
+                    CustomerId = id,
+                    ErrorMessage = "Customer with id " + id + " does not exist"
+                };
+                throw new FaultException<CustomerNotFoundFault>(fault, new FaultReason(ex.Message));
+            }   
         }
     }
 }

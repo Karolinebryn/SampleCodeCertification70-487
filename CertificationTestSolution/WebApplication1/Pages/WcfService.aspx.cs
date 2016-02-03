@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebApplication1.AdventureWorks_WcfService;
 
 namespace WebApplication1.Pages
 {
@@ -31,6 +33,21 @@ namespace WebApplication1.Pages
             catch (Exception ex)
             {
 
+            }
+        }
+
+        protected void btnSearchCustomerById_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var customerId = int.Parse(tbCustomerId.Text);
+                var service = new AdventureWorks_WcfService.AdventureWorksServiceClient();
+                var customer = service.GetCustomerWithFaultHandling(customerId);
+                lblSearchResult.Text = customer.FirstName + " " + customer.LastName;
+            }
+            catch (FaultException<CustomerNotFoundFault> fEx)
+            {
+                lblSearchResult.Text = "An error occured: " + fEx.Detail.ErrorMessage;
             }
         }
     }
