@@ -1,24 +1,128 @@
-﻿<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+﻿
+
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
-        a broad range of clients, including browsers and mobile devices. ASP.NET Web API
-        is an ideal platform for building RESTful applications on the .NET Framework.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
+        <h2>All products</h2>
+        <div id="allProductsContainer">
+
+        </div>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
+        <h2>Spesific Product</h2>
+        <div id="spesificProductContainer">
+
+        </div>
     </div>
     <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
+        <h2>Spesific Product Async</h2>
+        <div id="spesificProductContainer2">
+
+        </div>
     </div>
+    <div class="col-md-4">
+        <h2>Update Product</h2>
+        <form>
+            <div class="form-group">
+                <label for="tbProductId">ID</label>
+                <input type="text" class="form-control" id="tbProductId" disabled="disabled">
+            </div>
+            <div class="form-group">
+                <label for="tbProductName">Name</label>
+                <input type="text" class="form-control" id="tbProductName">
+            </div>
+            <div class="form-group">
+                <label for="tbProductPrice">Price</label>
+                <input type="number" class="form-control" id="tbProductPrice">
+            </div>
+
+            <button type="button" class="btn btn-primary" onclick="UpdateProduct();">Update</button>
+        </form>
+    </div>
+
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        GetAllProducts();
+        GetProduct(750);
+        GetProductAsync(750);
+    });
+
+    function GetAllProducts() {
+        var container = $('#allProductsContainer');
+        container.empty();
+        $.getJSON('/api/products')
+          .done(function (result) {
+              
+              if (result.Success === true) {
+                  var table = '<table class="table"><thead><tr><th>ID</th><th>Name</th><th>Price</th></tr></thead><tbody>';
+                  $.each(result.Data, function (key, item) {
+                      table += '<tr><td>' + item.ProductID + '</td><td>' + item.Name + '</td><td>' + item.ListPrice + ' kr</td></tr>';
+                  });
+                  table += '</tbody></table>';
+                  container.append(table);
+              } else {
+                  alert('Failed to get all products. Message: ' + result.ErrorMessage);
+              }       
+          });
+    };
+    
+    function GetProduct(id) {
+        var container = $('#spesificProductContainer');
+        container.empty();
+        $.getJSON('/api/products/' + id)
+          .done(function (result) {
+
+              if (result.Success === true) {
+                  var product = result.Data;
+                  container.append('<dl><dt>ID</dt><dd>' + product.ProductID + '</dd><dt>Name</dt><dd>' + product.Name + '</dd><dt>Price</dt><dd>' + product.ListPrice + ' kr</dd></dl>');
+
+                  //add to update form
+                  $('#tbProductId').val(product.ProductID);
+                  $('#tbProductName').val(product.Name);
+                  $('#tbProductPrice').val(product.ListPrice);
+
+              } else {
+                  alert('Failed to get product. Message: ' + result.ErrorMessage);
+              }
+          });
+    };
+
+    function GetProductAsync(id) {
+        var container = $('#spesificProductContainer2');
+        container.empty();
+        $.getJSON('/async/products/' + id)
+          .done(function (result) {
+
+              if (result.Success === true) {
+                  var product = result.Data;
+                  container.append('<dl><dt>ID</dt><dd>' + product.ProductID + '</dd><dt>Name</dt><dd>' + product.Name + '</dd><dt>Price</dt><dd>' + product.ListPrice + ' kr</dd></dl>');
+
+              } else {
+                  alert('Failed to get product. Message: ' + result.ErrorMessage);
+              }
+          });
+    };
+
+    function UpdateProduct() {
+        var id = $('#tbProductId').val();
+        var updatedProduct = { ProductID: id, Name: $('#tbProductName').val(), ListPrice: $('#tbProductPrice').val() };
+
+        $.ajax({
+            type: "PUT",
+            url: '/api/products/' + id,
+            contentType: "application/json",
+            data: JSON.stringify(updatedProduct),
+            success: function (result) {
+                if (result.Success) {
+                    alert("Product is updated!");
+                    GetProduct(id);
+                } else {
+                    alert("Feild to update product. Message: " + result.ErrorMessage);
+                }
+                    
+            }
+        });
+    };
+
+</script>
