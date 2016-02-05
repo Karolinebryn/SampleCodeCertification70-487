@@ -1,0 +1,150 @@
+﻿<div class="row">
+    <div class="col-md-4">
+        <h2>Register / Log in</h2>
+        <button type="button" class="btn-link" onclick="ShowRegisterForm();" id="btnSwitchToRegister">Register</button>
+        <button type="button" class="btn-link" onclick="ShowLoginForm();" id="btnSwitchToLogin">Log in</button>
+
+        <div id="registerContainer">
+            <form>
+                <div class="form-group">
+                    <label for="tbEmail">Email</label>
+                    <input type="email" class="form-control" id="tbEmail">
+                </div>
+                <div class="form-group">
+                    <label for="tbPassword">Password</label>
+                    <input type="password" class="form-control" id="tbPassword">
+                </div>
+                <div class="form-group">
+                    <label for="tbPassword2">Confirm Password</label>
+                    <input type="password" class="form-control" id="tbPassword2">
+                </div>
+                <button type="button" class="btn btn-primary" onclick="Register();">Register</button>
+            </form>
+        </div>
+
+        <div id="loginContainer">
+            <form>
+                <div class="form-group">
+                    <label for="tbLoginEmail">Email</label>
+                    <input type="email" class="form-control" id="tbLoginEmail" >
+                </div>
+                <div class="form-group">
+                    <label for="tbLoginPassword">Password</label>
+                    <input type="password" class="form-control" id="tbLoginPassword" >
+                </div>
+                <button type="button" class="btn btn-primary" onclick="LogIn();">Log in</button>
+            </form>
+        </div>
+
+        <p id="loginErrorMessage"></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Invoke API</h2>
+        <form>
+            <div class="form-group">
+                <label for="tbInvokeApiUser">User</label>
+                <input type="email" class="form-control" id="tbInvokeApiUser" disabled="disabled">
+            </div>
+            <div class="form-group">
+                <label for="tbInvokeApiResult">Result</label>
+                <p id="invokeApiResult">&nbsp;</p>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="CallApi();">Call API</button>
+        </form>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        ShowLoginForm();
+    });
+
+    function CallApi() {
+        token = sessionStorage.getItem('accessToken');
+        var headers = {};
+        if (token) {
+            headers.Authorization = 'Bearer ' + token;
+        }
+        $.ajax({
+            type: 'GET',
+            url: '/api/values/1',
+            headers: headers
+        }).done(function (data) {
+            $('#invokeApiResult').html(data);
+        }).fail(function (data) {
+            var message = data.status + ': ' + data.responseJSON.Message;
+            $('#invokeApiResult').html(message);
+        });
+    }
+
+    function ShowRegisterForm() {
+        $('#btnSwitchToRegister').hide();
+        $('#loginContainer').hide();
+        $('#registerContainer').show();
+        $('#btnSwitchToLogin').show();
+    }
+
+    function ShowLoginForm() {
+        $('#registerContainer').hide();
+        $('#btnSwitchToLogin').hide();
+        $('#btnSwitchToRegister').show();
+        $('#loginContainer').show();
+    }
+
+    function ShowIsLogedIn() {
+        $('#registerContainer').hide();
+        $('#btnSwitchToLogin').hide();
+        $('#btnSwitchToRegister').hide();
+        $('#loginContainer').hide();
+        $('#loginErrorMessage').html('User is logged in');
+    }
+
+    function Register() {
+
+        var data = {
+            Email: $('#tbEmail').val(),
+            Password: $('#tbPassword').val(),
+            ConfirmPassword: $('#tbPassword2').val()
+        };
+
+        $.ajax({
+            type: "POST",
+            url: '/api/account/register',
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function (result) {
+                if (result) {
+                    alert(result);
+                } else {
+                    ShowLoginForm();
+                }
+
+            }
+        });
+    }
+
+    function LogIn() {
+
+        var loginData = {
+            grant_type: 'password',
+            username: $('#tbLoginEmail').val(),
+            password: $('#tbLoginPassword').val()
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: '/Token',
+            data: loginData
+        }).done(function (data) {
+            $('#tbInvokeApiUser').val(data.userName);
+            sessionStorage.setItem('accessToken', data.access_token);
+            ShowIsLogedIn();
+        }).fail(function (data) {
+            var message = data.status + ': ' + data.responseJSON.Message;
+            $('#loginErrorMessage').html(message);
+        });
+    }
+
+</script>

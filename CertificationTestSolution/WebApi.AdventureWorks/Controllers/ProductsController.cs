@@ -3,7 +3,6 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.Mvc;
 
 namespace WebApi.AdventureWorks.Controllers
 {
@@ -67,6 +66,7 @@ namespace WebApi.AdventureWorks.Controllers
 
         }
 
+       // [IdentityBasicAuthentication]
         // PUT: api/Products/5
         public object Put(int id, Product product)
         {
@@ -100,7 +100,7 @@ namespace WebApi.AdventureWorks.Controllers
 
         }
 
-        [System.Web.Http.Route("async/products/{id}")]
+        [Route("async/products/{id}")]
         public async Task<object> GetAsync(int id)
         {
             try

@@ -14,5 +14,12 @@ namespace WebApi.AdventureWorks.Controllers
 
             return View();
         }
+
+        public ActionResult Authentication()
+        {
+            ViewBag.Title = "Authentication";
+
+            return View();
+        }
     }
 }
