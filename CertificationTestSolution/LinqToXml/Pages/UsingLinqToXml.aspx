@@ -9,6 +9,7 @@
     <div class="row">
         <div class="col-md-6">
             <h3>Create a new XmlDocument</h3>
+            <p>created on page load</p>
             <asp:Label runat="server" ID="lblResult1"></asp:Label>
         </div>
         <div class="col-md-6">

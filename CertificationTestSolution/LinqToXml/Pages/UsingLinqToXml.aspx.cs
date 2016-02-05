@@ -14,8 +14,38 @@ namespace LinqToXml.Pages
         {
             if (!Page.IsPostBack)
             {
+                CreateXmlDocument();
                 LoadXmlFromFile();
                 ParseTheString();
+            }
+        }
+
+        private void CreateXmlDocument()
+        {
+            try
+            {
+                XDocument srcTree = new XDocument(
+                    new XComment("This is a comment"),
+                    new XElement("Root",
+                        new XElement("Child1", "data1"),
+                        new XElement("Child2", "data2"),
+                        new XElement("Child3", "data3"),
+                        new XElement("Child2", "data4"),
+                        new XElement("Info5", "info5"),
+                        new XElement("Info6", "info6"),
+                        new XElement("Info7", "info7"),
+                        new XElement("Info8", "info8")
+                    )
+                );
+
+                srcTree.Save(@"C:\TestDoc\test2.xml");
+                lblResult1.Text = "Document successfully saved to path: C:\\TestDoc\\test2.xml";
+                lblResult1.ForeColor = System.Drawing.Color.Black;
+            }
+            catch (Exception ex)
+            {
+                lblResult1.Text = "An error occured: " + ex.Message;
+                lblResult1.ForeColor = System.Drawing.Color.Red;
             }
         }
 
