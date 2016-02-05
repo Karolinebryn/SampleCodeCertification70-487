@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>1</id>
+    <version>0.1</version>
+    <title>The Calculator</title>
+    <authors>linnkb</authors>
+    <owners>linnkb</owners>
+    <projectUrl>http://capgemini.com</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A super awesome calculator</description>
+    <releaseNotes>This is the first version</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>Onetag twotag</tags>
+  </metadata>
+</package>
