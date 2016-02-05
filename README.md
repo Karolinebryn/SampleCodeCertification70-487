@@ -1,7 +1,13 @@
 # SampleCodeCertification70-487
 Some sample code related to the topics covered in exam 70-487
 
-## Project descriptions
+## Notes
+See "Documents" folder for some notes and Exam Dumps.
+
+## Training / Course
+I took this training course on Microsoft Virtual Academy: https://mva.microsoft.com/en-US/training-courses/developing-windows-azure-and-web-services-jump-start-8258?l=9Q6IxgKy_2404984382
+
+## Solution Project Descriptions
 
 ### AzureDataStorage
 Blob Storage: create and list containers; upload blob to container and list all blobs in container.
